@@ -44,4 +44,27 @@ const bookStore = {
 }
 
 // Write your code here!
+function alterFormat(pageInfo){
+    const bookStoreTitle = document.querySelector("#header");
+    const bookList = document.querySelector("#book-list");
+    const example = document.querySelector("#delete-this");
+    if (example) {
+        example.remove();
+    }
+    bookStoreTitle.textContent = pageInfo.name;
+    pageInfo.books.forEach((book) => {
+        const bookContainer = document.createElement("li");
+        const bookTitle = document.createElement("h3");
+        const bookAuthor = document.createElement("p");
+        const bookImage = document.createElement("img");
+        bookTitle.textContent = book.title;
+        bookAuthor.textContent = book.author;
+        bookImage.src = book.imageUrl;
+        bookContainer.appendChild(bookTitle);
+        bookContainer.appendChild(bookAuthor);
+        bookContainer.appendChild(bookImage);
+        bookList.appendChild(bookContainer);
+    })
+}
 
+alterFormat(bookStore);
